@@ -1,9 +1,7 @@
 #include <stdbool.h>
-
-#include "rome.h"
-
 #include <assert.h>
 
+#include "rome.h"
 #include "result.h"
 
 /*
