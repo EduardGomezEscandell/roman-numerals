@@ -145,15 +145,15 @@ struct result consume_next_token(char const* str, struct token* t) {
     // Repetition! Keep reading until character changes
     const char* it;
     for (it = str+2; *str == *it; ++it) {
-        if (!parse_roman_character(*str, &second)) {
-            return errorf("invalid character: %c", *str);
-        }
+        // Empty loop
     }
-    const int num_repeats = (int)(it - str);
-    if (!valid_repeats(first, num_repeats)) {
-        return errorf("character %c cannot appear %d times in a row", *str, num_repeats);
+
+    const int count = (int)(it - str);
+    if (!valid_repeats(first, count)) {
+        return errorf("character %c cannot appear %d times in a row", *str, count);
     }
-    *t = (struct token) {.type = REPEAT, .digit = first, .count = num_repeats};
+
+    *t = (struct token) {.type = REPEAT, .digit = first, .count = count};
     return success(t->count);
 }
 
