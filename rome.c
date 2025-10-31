@@ -6,6 +6,16 @@
 
 #include "result.h"
 
+/*
+ * In order to parse (or reject) inputs, the following three steps are performed:
+ *  1. The roman numeral is tokenized. A token is either a prefix-sufix pair (like IV in MMDIV), a repeated roman digit
+ *     (like MM in the previous example), or a lonely digit (like the D in the previous example). Invalid tokens may be
+ *     rejected here (e.g: LL or XM).
+ *  2. Token ordering is strict in roman numberals, so any invalid sequence of tokens like IVIV (tokenized as IV,IV) is
+ *     rejected here.
+ *  3. The values of the tokens are added up.
+ */
+
 enum token_type {
     PAIR,     // Prefix-suffix pair  (IV, XC, etc.)
     REPEAT    // Repeated value (I, II, CCC, etc.). Single-numerals (I, L) are considered trivial repeats.
