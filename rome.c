@@ -165,6 +165,7 @@ int token_value(const struct token t) {
             return t.suffix - t.prefix;
         default:
             assert(false);
+            __builtin_unreachable();
     }
 }
 
@@ -192,6 +193,7 @@ bool sprint_token(char *const buff, const int len, const struct token t) {
         }
         default:
             assert(false);
+            __builtin_unreachable();
     }
 }
 
